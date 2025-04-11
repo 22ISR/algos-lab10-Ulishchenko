@@ -84,3 +84,43 @@ _Если ничего не выбрано, код ничего не делае�
 ```python
 listbox.delete(0, tk.END)
 ```
+### PEZYLTAT.
+
+import tkinter as tk
+root = tk.Tk
+root.title ("Список дел") 
+root.geometry("300x450")
+
+def add_item():
+    new_item = textbox.get()
+    if new_item.strip():
+        listbox.insert(tk.END, new_item)
+        textbox.delete(0,tk.END)
+
+def delete_selected():
+    selected = listbox.curselection()
+    if selected:
+        listbox.delete(selected[0])
+
+def clear_list():
+    listbox.delite(0, tk.END)
+texbox = tk.Entry(root, font=("Arial", 14))
+texbox.pack(padx=20, pady=10)
+
+add_button = tk.Button(root, text="Добавить", command=add_item)
+add_button.pack(pady=5)
+
+listbox = tk.Listbox(root, width=40, height=10)
+listbox.pack(pady=10)
+
+listbox.insert(tk.END, "водород (H)")
+listbox.insert(tk.END, "гелий (He)")
+listbox.insert(tk.END, "литий (Li)")
+
+delete_button = tk.Button(root, text="Удалить", command=delete_selected)
+delete_button.pack()
+
+clear_button = tk.Button(root, text="Очистить список", command=clear_list)
+clear_button.pack(pady=5)
+
+root.mainloop()
